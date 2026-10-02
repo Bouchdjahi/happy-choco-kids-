@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAPPY CHOCO KIDS — Palmary's Algerian Chocolate Sensation</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: radial-gradient(
+          ellipse at 50% 30%,
+          #2a1408 0%,
+          #0d0602 70%
+        );
+        color: #fff7e8;
+        font-family: 'Poppins', system-ui, sans-serif;
+        overflow-x: hidden;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* ---------- NAV ---------- */
+      .nav {
+        position: fixed;
+        top: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 0.8rem 2.2rem;
+        background: rgba(30, 15, 5, 0.65);
+        backdrop-filter: blur(12px) saturate(180%);
+        border-radius: 60px;
+        border: 1px solid rgba(255, 215, 140, 0.25);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        white-space: nowrap;
+      }
+      .nav.shrink {
+        padding: 0.4rem 1.8rem;
+        top: 0.8rem;
+        gap: 1.8rem;
+      }
+      .nav-logo {
+        font-weight: 900;
+        font-size: 1.4rem;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #f5d9a8, #c98a4b, #f5d9a8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transition: font-size 0.4s;
+      }
+      .nav.shrink .nav-logo {
+        font-size: 1.1rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.8rem;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+      .nav-links a {
+        color: #e8d5b5;
+        text-decoration: none;
+        transition: color 0.3s;
+        position: relative;
+      }
+      .nav-links a:hover {
+        color: #ffd78c;
+      }
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: #ffd78c;
+        transition: width 0.3s;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* ---------- HERO ---------- */
+      #hero-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        height: 100vh;
+        min-height: 700px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 5vh;
+        pointer-events: none;
+      }
+      .hero-content > * {
+        pointer-events: auto;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(200, 40, 30, 0.85);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.4rem 1.5rem;
+        border-radius: 40px;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(255, 200, 100, 0.4);
+        box-shadow: 0 0 30px rgba(200, 40, 30, 0.4);
+      }
+      .hero-title {
+        font-size: clamp(2.5rem, 7vw, 5.5rem);
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        background: linear-gradient(
+          135deg,
+          #fef0d7 0%,
+          #d49b5c 40%,
+          #b36b2c 70%,
+          #fef0d7 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.3rem;
+        filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6));
+      }
+      .hero-sub {
+        font-size: clamp(0.9rem, 2vw, 1.5rem);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #ffd78c, #e6a756);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.8rem;
+      }
+      .hero-desc {
+        font-size: 0.95rem;
+        max-width: 500px;
+        margin: 0 auto 1.5rem;
+        color: #c9b69b;
+        line-height: 1.6;
+      }
+      .hero-cta-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .cta {
+        background: linear-gradient(135deg, #d48c3c, #b3651e);
+        border: none;
+        color: #fff7e8;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 0.9rem 2.5rem;
+        border-radius: 60px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0 15px 35px -8px rgba(200, 120, 40, 0.6),
+          inset 0 1px 0 rgba(255, 215, 140, 0.4);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .cta:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 25px 45px -8px rgba(200, 120, 40, 0.8);
+      }
+      .cta.ghost {
+        background: transparent;
+        border: 1.5px solid rgba(255, 215, 140, 0.4);
+        color: #ffd78c;
+      }
+      .cta.ghost:hover {
+        background: rgba(255, 215, 140, 0.1);
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7rem;
+        color: #8a765e;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        animation: bob 2s ease-in-out infinite;
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(8px);
+        }
+      }
+
+      /* ---------- SECTIONS ---------- */
+      .section {
+        position: relative;
+        z-index: 10;
+        padding: 7rem 2rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .section-dark {
+        background: linear-gradient(180deg, #1a0e07 0%, #2a180c 100%);
+        border-radius: 60px 60px 0 0;
+        margin-top: -60px;
+      }
+      .section-title {
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #fef0d7, #d49b5c, #b36b2c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .section-sub {
+        text-align: center;
+        color: #a89278;
+        max-width: 600px;
+        margin: 0 auto 3.5rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      /* ---------- IMAGE SLOT SYSTEM ---------- */
+      /* Drop your real product photos into .img-slot and they fill the frame */
+      .img-slot {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(60, 30, 12, 0.6),
+          rgba(20, 10, 3, 0.8)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed rgba(255, 215, 140, 0.3);
+        transition: border-color 0.3s;
+      }
+      .img-slot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .img-slot .slot-label {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #ffd78c;
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        pointer-events: none;
+        opacity: 0.7;
+      }
+      .img-slot:not(:has(img)) .slot-label {
+        opacity: 1;
+      }
+      .img-slot:hover {
+        border-color: rgba(255, 215, 140, 0.6);
+      }
+
+      /* ---------- PRODUCT CARDS ---------- */
+      .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem;
+        perspective: 1200px;
+      }
+      .product-float {
+        width: 320px;
+        background: linear-gradient(
+          145deg,
+          rgba(40, 22, 10, 0.9),
+          rgba(20, 10, 3, 0.95)
+        );
+        border-radius: 40px;
+        padding: 1.8rem;
+        border: 1px solid rgba(255, 215, 140, 0.15);
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8),
+          inset 0 1px 0 rgba(255, 215, 140, 0.1);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .product-float:hover {
+        transform: translateY(-20px) rotateX(3deg) rotateY(-2deg) scale(1.02);
+        border-color: rgba(255, 215, 140, 0.4);
+        box-shadow: 0 45px 80px -15px rgba(200, 120, 40, 0.4);
+      }
+      .product-visual {
+        width: 100%;
+        height: 200px;
+        border-radius: 24px;
+        margin-bottom: 1.2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .product-name {
+        font-size: 1.4rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #fef0d7, #d49b5c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.4rem;
+      }
+      .product-desc {
+        font-size: 0.85rem;
+        color: #b8a48a;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+      }
+      .product-meta {
+        font-size: 0.75rem;
+        color: #8a765e;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.3rem;
+      }
+      .product-price {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #ffd78c;
+        margin-bottom: 1.2rem;
+      }
+      .explore-btn {
+        background: transparent;
+        border: 1.5px solid rgba(255, 215, 140, 0.4);
+        color: #ffd78c;
+        padding: 0.6rem 1.8rem;
+        border-radius: 60px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .explore-btn:hover {
+        background: rgba(255, 215, 140, 0.1);
+        border-color: #ffd78c;
+        box-shadow: 0 0 30px rgba(255, 215, 140, 0.2);
+      }
+
+      /* ---------- BREAK ---------- */
+      .break-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 3rem 0;
+      }
+      .break-bar {
+        width: 340px;
+        height: 140px;
+        background: linear-gradient(145deg, #8b2a1a, #6b1a0a, #4a1005);
+        border-radius: 16px;
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8),
+          inset 0 2px 0 rgba(255, 215, 140, 0.15);
+        position: relative;
+        cursor: grab;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .break-bar::before {
+        content: 'HAPPY CHOCO KIDS';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.5rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .break-bar .crack-line {
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          rgba(255, 215, 140, 0.8),
+          transparent
+        );
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.5s;
+        z-index: 3;
+      }
+      .break-bar.broken .crack-line {
+        height: 0%;
+        opacity: 0;
+      }
+      .break-bar .finger {
+        position: absolute;
+        top: 50%;
+        width: 42%;
+        height: 65%;
+        background: linear-gradient(180deg, #6b3a1a 0%, #4a2510 100%);
+        border-radius: 8px;
+        transform: translateY(-50%);
+        box-shadow: inset 0 2px 0 rgba(255, 215, 140, 0.1);
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 2;
+      }
+      .break-bar .finger.left {
+        left: 6%;
+      }
+      .break-bar .finger.right {
+        right: 6%;
+      }
+      .break-bar.broken .finger.left {
+        transform: translateY(-50%) translateX(-30px) rotate(-8deg);
+      }
+      .break-bar.broken .finger.right {
+        transform: translateY(-50%) translateX(30px) rotate(8deg);
+      }
+      .break-bar .finger::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 22%;
+        background: linear-gradient(90deg, #f5d9a8, #e8c08a);
+        border-radius: 3px;
+      }
+      .break-msg {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #ffd78c;
+        text-shadow: 0 0 30px rgba(255, 215, 140, 0.5);
+        min-height: 2.5rem;
+      }
+      .replay-btn {
+        background: transparent;
+        border: 1.5px solid rgba(255, 215, 140, 0.3);
+        color: #ffd78c;
+        padding: 0.6rem 2rem;
+        border-radius: 60px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .replay-btn:hover {
+        background: rgba(255, 215, 140, 0.1);
+        border-color: #ffd78c;
+      }
+
+      /* ---------- FUN ---------- */
+      .fun-options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .fun-btn {
+        background: rgba(40, 22, 10, 0.8);
+        border: 1px solid rgba(255, 215, 140, 0.2);
+        color: #e8d5b5;
+        padding: 0.9rem 1.8rem;
+        border-radius: 60px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .fun-btn:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 215, 140, 0.6);
+        color: #ffd78c;
+      }
+      .fun-btn.active {
+        background: linear-gradient(135deg, #d48c3c, #b3651e);
+        border-color: #ffd78c;
+        color: #fff7e8;
+      }
+      #fun-feedback {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #ffd78c;
+        min-height: 2.5rem;
+      }
+
+      /* ---------- STORY ---------- */
+      .story-block {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .story-text {
+        flex: 1 1 400px;
+        max-width: 560px;
+      }
+      .story-text h3 {
+        font-size: 1.9rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #fef0d7, #d49b5c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 1rem;
+      }
+      .story-text p {
+        color: #b8a48a;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        font-size: 0.98rem;
+      }
+      .story-badge {
+        display: inline-block;
+        background: rgba(200, 40, 30, 0.15);
+        border: 1px solid rgba(200, 40, 30, 0.3);
+        padding: 0.3rem 1.2rem;
+        border-radius: 40px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #e8a090;
+        margin-bottom: 1rem;
+      }
+      .palmary-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .fact {
+        background: rgba(40, 22, 10, 0.6);
+        padding: 0.9rem 1.2rem;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 215, 140, 0.1);
+        text-align: center;
+        flex: 1 1 100px;
+      }
+      .fact-number {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #ffd78c;
+      }
+      .fact-label {
+        font-size: 0.65rem;
+        color: #8a765e;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .story-visual {
+        flex: 1 1 280px;
+        max-width: 380px;
+        height: 400px;
+        border-radius: 30px;
+        overflow: hidden;
+      }
+
+      /* ---------- IMAGE GRID SECTION ---------- */
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .gallery-item {
+        height: 280px;
+        border-radius: 24px;
+      }
+
+      /* ---------- FOOTER ---------- */
+      footer {
+        position: relative;
+        z-index: 10;
+        background: #0d0602;
+        padding: 3.5rem 2rem 2rem;
+        border-top: 1px solid rgba(255, 215, 140, 0.08);
+        text-align: center;
+      }
+      .footer-logo {
+        font-size: 2.2rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #fef0d7, #d49b5c, #b36b2c);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.4rem;
+      }
+      .footer-tagline {
+        color: #a89278;
+        font-size: 0.95rem;
+        margin-bottom: 1.8rem;
+        letter-spacing: 0.1em;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+        font-size: 0.85rem;
+      }
+      .footer-links a {
+        color: #b8a48a;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .footer-links a:hover {
+        color: #ffd78c;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 215, 140, 0.06);
+        padding-top: 1.5rem;
+        font-size: 0.75rem;
+        color: #5a4a38;
+      }
+
+      @media (max-width: 768px) {
+        .nav {
+          gap: 0.8rem;
+          padding: 0.5rem 1rem;
+          top: 0.8rem;
+          width: 96%;
+          justify-content: center;
+        }
+        .nav-links {
+          gap: 0.7rem;
+          font-size: 0.6rem;
+        }
+        .nav-logo {
+          font-size: 0.85rem;
+        }
+        .product-float {
+          width: 290px;
+        }
+        .section {
+          padding: 4rem 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <div class="nav-logo">HAPPY CHOCO KIDS</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#break-section">Break It</a>
+        <a href="#story">Story</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO CANVAS — the 3D bar that cuts in half -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- HERO TEXT -->
+    <section class="hero-content" id="home">
+      <div class="hero-badge">PALMARY FOOD · ALGERIA</div>
+      <h1 class="hero-title">HAPPY CHOCO KIDS</h1>
+      <div class="hero-sub">BREAK IT. BITE IT. LOVE IT.</div>
+      <p class="hero-desc">
+        A delicious combination of crispy wafer, creamy hazelnut filling and
+        smooth chocolate coating.
+      </p>
+      <div class="hero-cta-row">
+        <button class="cta" id="hero-cta">BREAK IT OPEN</button>
+        <button class="cta ghost" id="hero-reset">RESET VIEW</button>
+      </div>
+      <div class="scroll-hint">↓ scroll to explore ↓</div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section" id="products">
+      <h2 class="section-title">PRODUCT UNIVERSE</h2>
+      <p class="section-sub">
+        Floating chocolate masterpieces from Palmary. Each one crafted for pure
+        joy.
+      </p>
+      <div class="product-grid">
+        <div class="product-float" data-flavor="milk">
+          <!-- 🖼️ IMAGE SLOT 1: Milk Chocolate product photo -->
+          <div class="product-visual img-slot">
+            <img
+              src="YOUR-MILK-CHOCOLATE-PHOTO.jpg"
+              alt="Happy Choco Kids Milk Chocolate"
+              onerror="this.style.display='none'"
+            />
+            <span class="slot-label">📷 Add milk choco photo</span>
+          </div>
+          <div class="product-name">MILK CHOCOLATE</div>
+          <div class="product-desc">
+            Wafer filled with hazelnut cream and coated with milk chocolate.
+          </div>
+          <div class="product-meta">25g · 2-piece pack available</div>
+          <div class="product-price">~80 DA</div>
+          <button class="explore-btn">EXPLORE</button>
+        </div>
+        <div class="product-float" data-flavor="white">
+          <!-- 🖼️ IMAGE SLOT 2: White Chocolate product photo -->
+          <div class="product-visual img-slot">
+            <img
+              src="YOUR-WHITE-CHOCOLATE-PHOTO.jpg"
+              alt="Happy Choco Kids White Chocolate"
+              onerror="this.style.display='none'"
+            />
+            <span class="slot-label">📷 Add white choco photo</span>
+          </div>
+          <div class="product-name">WHITE CHOCOLATE</div>
+          <div class="product-desc">
+            Wafer filled with hazelnut cream and coated with white chocolate.
+          </div>
+          <div class="product-meta">25g · 42g export format</div>
+          <div class="product-price">~80 DA</div>
+          <button class="explore-btn">EXPLORE</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT'S INSIDE -->
+    <section class="section section-dark" id="whats-inside">
+      <h2 class="section-title">WHAT'S INSIDE?</h2>
+      <p class="section-sub">
+        Scroll to separate the layers. Every bite tells a story.
+      </p>
+      <div
+        style="
+          display: flex;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        "
+      >
+        <div
+          style="
+            text-align: center;
+            padding: 1.4rem 1.8rem;
+            background: rgba(40, 22, 10, 0.6);
+            border-radius: 26px;
+            border: 1px solid rgba(255, 215, 140, 0.1);
+            max-width: 200px;
+          "
+        >
+          <div style="font-size: 2.5rem">🍫</div>
+          <div
+            style="
+              font-weight: 700;
+              color: #ffd78c;
+              margin-top: 0.4rem;
+              font-size: 0.95rem;
+            "
+          >
+            01 — CHOCOLATE COATING
+          </div>
+          <div style="color: #a89278; font-size: 0.8rem">
+            Glossy shell, smooth melt
+          </div>
+        </div>
+        <div
+          style="
+            text-align: center;
+            padding: 1.4rem 1.8rem;
+            background: rgba(40, 22, 10, 0.6);
+            border-radius: 26px;
+            border: 1px solid rgba(255, 215, 140, 0.1);
+            max-width: 200px;
+          "
+        >
+          <div style="font-size: 2.5rem">🥐</div>
+          <div
+            style="
+              font-weight: 700;
+              color: #ffd78c;
+              margin-top: 0.4rem;
+              font-size: 0.95rem;
+            "
+          >
+            02 — CRISPY WAFER
+          </div>
+          <div style="color: #a89278; font-size: 0.8rem">
+            Thin, layered crunch
+          </div>
+        </div>
+        <div
+          style="
+            text-align: center;
+            padding: 1.4rem 1.8rem;
+            background: rgba(40, 22, 10, 0.6);
+            border-radius: 26px;
+            border: 1px solid rgba(255, 215, 140, 0.1);
+            max-width: 200px;
+          "
+        >
+          <div style="font-size: 2.5rem">🌰</div>
+          <div
+            style="
+              font-weight: 700;
+              color: #ffd78c;
+              margin-top: 0.4rem;
+              font-size: 0.95rem;
+            "
+          >
+            03 — HAZELNUT CREAM
+          </div>
+          <div style="color: #a89278; font-size: 0.8rem">
+            Creamy, rich, stretchy
+          </div>
+        </div>
+        <div
+          style="
+            text-align: center;
+            padding: 1.4rem 1.8rem;
+            background: rgba(40, 22, 10, 0.6);
+            border-radius: 26px;
+            border: 1px solid rgba(255, 215, 140, 0.1);
+            max-width: 200px;
+          "
+        >
+          <div style="font-size: 2.5rem">😋</div>
+          <div
+            style="
+              font-weight: 700;
+              color: #ffd78c;
+              margin-top: 0.4rem;
+              font-size: 0.95rem;
+            "
+          >
+            04 — THE FINAL BITE
+          </div>
+          <div style="color: #a89278; font-size: 0.8rem">
+            All together. Pure happy.
+          </div>
+        </div>
+      </div>
+
+      <!-- 🖼️ IMAGE SLOT 3: Cross-section / cut-in-half photo -->
+      <div style="margin-top: 3rem; display: flex; justify-content: center">
+        <div
+          class="img-slot"
+          style="width: 100%; max-width: 700px; height: 400px"
+        >
+          <img
+            src="YOUR-CUT-IN-HALF-PHOTO.jpg"
+            alt="Happy Choco Kids cut in half showing cream"
+            onerror="this.style.display='none'"
+          />
+          <span class="slot-label"
+            >📷 Add cut-in-half photo (cream + wafer visible)</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- BREAK -->
+    <section class="section" id="break-section">
+      <h2 class="section-title">READY TO BREAK IT?</h2>
+      <p class="section-sub">
+        Drag horizontally across the bar to crack it open.
+      </p>
+      <div class="break-area">
+        <div class="break-bar" id="break-bar">
+          <div class="finger left"></div>
+          <div class="finger right"></div>
+          <div class="crack-line"></div>
+        </div>
+        <div class="break-msg" id="break-msg"></div>
+        <button class="replay-btn" id="replay-btn" style="display: none">
+          BREAK IT AGAIN
+        </button>
+      </div>
+    </section>
+
+    <!-- FUN -->
+    <section class="section section-dark" id="fun">
+      <h2 class="section-title">HOW DO YOU EAT YOUR HAPPY?</h2>
+      <p class="section-sub">Pick your style. We'll animate it.</p>
+      <div class="fun-options">
+        <button class="fun-btn" data-fun="milk">🥛 With milk</button>
+        <button class="fun-btn" data-fun="bite">🍫 One bite</button>
+        <button class="fun-btn" data-fun="break">💥 Break it first</button>
+        <button class="fun-btn" data-fun="slow">😋 Slowly</button>
+        <button class="fun-btn" data-fun="share">❤️ Share it</button>
+      </div>
+      <div id="fun-feedback"></div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section" id="story">
+      <h2 class="section-title">WHERE HAPPINESS MEETS CHOCOLATE</h2>
+      <div class="story-block">
+        <div class="story-text">
+          <div class="story-badge">SINCE 2021 · PALMARY FOOD</div>
+          <h3>Born in Algeria. Made for joy.</h3>
+          <p>
+            Happy Choco Kids was launched in 2021 as part of Palmary's HAPPY
+            brand. Palmary Food, founded in 2001 in Boumerdès, Algeria, has
+            grown to become one of the country's leading food companies,
+            exporting to over 30 countries.
+          </p>
+          <p>
+            Happy Choco Kids quickly became a sensation. Algerians call it "the
+            Algerian Kinder Bueno" — but at three times less the price, it's
+            become a favorite for its own unique taste. In 2022, it was voted
+            Best Product of the Year in Algeria.
+          </p>
+          <p>
+            Every bar contains four simple ingredients: creamy milk chocolate,
+            crunchy wafer, flavorful hazelnuts — and a hidden ingredient that
+            isn't listed but you'll feel instantly: happiness.
+          </p>
+          <div class="palmary-facts">
+            <div class="fact">
+              <div class="fact-number">2001</div>
+              <div class="fact-label">Founded</div>
+            </div>
+            <div class="fact">
+              <div class="fact-number">2021</div>
+              <div class="fact-label">Launch</div>
+            </div>
+            <div class="fact">
+              <div class="fact-number">30+</div>
+              <div class="fact-label">Countries</div>
+            </div>
+            <div class="fact">
+              <div class="fact-number">2022</div>
+              <div class="fact-label">Award</div>
+            </div>
+          </div>
+        </div>
+        <!-- 🖼️ IMAGE SLOT 4: Product packaging photo -->
+        <div class="story-visual img-slot">
+          <img
+            src="YOUR-PACKAGING-PHOTO.jpg"
+            alt="Happy Choco Kids packaging"
+            onerror="this.style.display='none'"
+          />
+          <span class="slot-label">📷 Add packaging photo</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXTRA GALLERY — drop as many photos as you want -->
+    <section class="section section-dark" id="gallery">
+      <h2 class="section-title">THE CHOCOLATE GALLERY</h2>
+      <p class="section-sub">
+        Close-up details. Every texture. Every delicious moment.
+      </p>
+      <div class="image-gallery">
+        <!-- 🖼️ IMAGE SLOT 5 -->
+        <div class="gallery-item img-slot">
+          <img
+            src="YOUR-PHOTO-1.jpg"
+            alt="Happy Choco Kids detail 1"
+            onerror="this.style.display='none'"
+          />
+          <span class="slot-label">📷 Photo 1</span>
+        </div>
+        <!-- 🖼️ IMAGE SLOT 6 -->
+        <div class="gallery-item img-slot">
+          <img
+            src="YOUR-PHOTO-2.jpg"
+            alt="Happy Choco Kids detail 2"
+            onerror="this.style.display='none'"
+          />
+          <span class="slot-label">📷 Photo 2</span>
+        </div>
+        <!-- 🖼️ IMAGE SLOT 7 -->
+        <div class="gallery-item img-slot">
+          <img
+            src="YOUR-PHOTO-3.jpg"
+            alt="Happy Choco Kids detail 3"
+            onerror="this.style.display='none'"
+          />
+          <span class="slot-label">📷 Photo 3</span>
+        </div>
+        <!-- 🖼️ IMAGE SLOT 8 -->
+        <div class="gallery-item img-slot">
+          <img
+            src="YOUR-PHOTO-4.jpg"
+            alt="Happy Choco Kids detail 4"
+            onerror="this.style.display='none'"
+          />
+          <span class="slot-label">📷 Photo 4</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <div class="footer-logo">HAPPY CHOCO KIDS</div>
+      <div class="footer-tagline">Break it. Bite it. Love it.</div>
+      <div class="footer-links">
+        <a href="#products">Products</a>
+        <a href="#story">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Palmary Food — Happy Choco Kids. Made in Algeria 🇩🇿<br />
+        Zone Industrielle Kharouba, Boumerdès, Algeria
+      </div>
+    </footer>
+
+    <!-- THREE.JS -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+
+    <script type="module">
+      import * as THREE from 'three';
+
+      // ============================================================
+      // SCENE SETUP
+      // ============================================================
+      const canvas = document.getElementById('hero-canvas');
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.3;
+
+      const scene = new THREE.Scene();
+      scene.background = null;
+
+      const camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        100
+      );
+      camera.position.set(0, 0.5, 6.5);
+
+      // ============================================================
+      // LIGHTS — studio chocolate commercial lighting
+      // ============================================================
+      scene.add(new THREE.AmbientLight(0xfff0e0, 0.5));
+
+      const keyLight = new THREE.DirectionalLight(0xfff0dd, 2.2);
+      keyLight.position.set(4, 6, 5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.width = 1024;
+      keyLight.shadow.mapSize.height = 1024;
+      scene.add(keyLight);
+
+      const fillLight = new THREE.PointLight(0xffaa55, 1.5, 20);
+      fillLight.position.set(-4, 2, 4);
+      scene.add(fillLight);
+
+      const rimLight = new THREE.PointLight(0xffcc88, 1.0, 25);
+      rimLight.position.set(0, -3, -6);
+      scene.add(rimLight);
+
+      const backLight = new THREE.DirectionalLight(0xffddaa, 0.8);
+      backLight.position.set(-2, 3, -5);
+      scene.add(backLight);
+
+      // ============================================================
+      // HAPPY CHOCO KIDS BAR — two fingers that cut in half
+      // Structure mimics the real product:
+      //   - Chocolate coating (glossy shell, top + bottom)
+      //   - Crispy wafer layers
+      //   - Hazelnut cream in the middle
+      // ============================================================
+
+      const barGroup = new THREE.Group();
+
+      // ---------- MATERIALS ----------
+      const chocoMat = new THREE.MeshPhysicalMaterial({
+        color: 0x5a2e12,
+        roughness: 0.22,
+        metalness: 0.08,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.12,
+        emissive: 0x2a1206,
+        emissiveIntensity: 0.18,
+      });
+
+      const waferMat = new THREE.MeshPhysicalMaterial({
+        color: 0xd9a566,
+        roughness: 0.75,
+        metalness: 0.0,
+        clearcoat: 0.05,
+      });
+
+      const creamMat = new THREE.MeshPhysicalMaterial({
+        color: 0xf7e0b0,
+        roughness: 0.45,
+        metalness: 0.0,
+        clearcoat: 0.35,
+        clearcoatRoughness: 0.3,
+        emissive: 0x4a3218,
+        emissiveIntensity: 0.12,
+      });
+
+      // ---------- HELPER: build one chocolate finger ----------
+      // A finger = chocolate shell + wafer layers + cream inside
+      // The bar sits horizontally, cut on the X axis (left half / right half)
+      function buildFinger() {
+        const finger = new THREE.Group();
+
+        // Outer chocolate shell (top + bottom + sides, hollow look)
+        // We use a rounded box for the shell
+        const shellGeo = new THREE.BoxGeometry(2.6, 0.85, 0.75, 24, 12, 12);
+        const shell = new THREE.Mesh(shellGeo, chocoMat);
+        shell.castShadow = true;
+        shell.receiveShadow = true;
+        finger.add(shell);
+
+        // Wafer layers inside (two thin wafers with cream between)
+        // Bottom wafer
+        const bottomWafer = new THREE.Mesh(
+          new THREE.BoxGeometry(2.4, 0.09, 0.62),
+          waferMat
+        );
+        bottomWafer.position.y = -0.22;
+        bottomWafer.castShadow = true;
+        finger.add(bottomWafer);
+
+        // Cream layer (middle — this is the hero of the cut reveal)
+        const cream = new THREE.Mesh(
+          new THREE.BoxGeometry(2.45, 0.22, 0.65),
+          creamMat
+        );
+        cream.position.y = -0.03;
+        cream.castShadow = true;
+        finger.add(cream);
+
+        // Top wafer
+        const topWafer = new THREE.Mesh(
+          new THREE.BoxGeometry(2.4, 0.09, 0.62),
+          waferMat
+        );
+        topWafer.position.y = 0.16;
+        topWafer.castShadow = true;
+        finger.add(topWafer);
+
+        // Small chocolate bumps on top (texture detail)
+        for (let i = 0; i < 6; i++) {
+          const bump = new THREE.Mesh(
+            new THREE.SphereGeometry(0.045, 6, 6),
+            chocoMat
+          );
+          bump.position.set(
+            -0.9 + i * 0.36 + (Math.random() - 0.5) * 0.06,
+            0.44 + Math.random() * 0.02,
+            (Math.random() - 0.5) * 0.3
+          );
+          bump.castShadow = true;
+          finger.add(bump);
+        }
+
+        return finger;
+      }
+
+      // ---------- BUILD THE TWO FINGERS ----------
+      // Left half and right half — they separate on the X axis
+      const leftHalf = buildFinger();
+      const rightHalf = buildFinger();
+
+      // Position them side by side with a tiny gap (the cut line)
+      leftHalf.position.x = -1.35;
+      rightHalf.position.x = 1.35;
+
+      barGroup.add(leftHalf);
+      barGroup.add(rightHalf);
+
+      // ---------- CREAM STRETCH BETWEEN THE HALVES ----------
+      // This thin cream strand connects the two halves when they separate
+      const stretchGeo = new THREE.CylinderGeometry(
+        0.06,
+        0.06,
+        2.6,
+        12,
+        1,
+        true
+      );
+      const stretchMat = new THREE.MeshPhysicalMaterial({
+        color: 0xf7e0b0,
+        roughness: 0.5,
+        metalness: 0.0,
+        clearcoat: 0.2,
+        transparent: true,
+        opacity: 0.0, // starts invisible, appears when breaking
+        side: THREE.DoubleSide,
+      });
+      const creamStretch = new THREE.Mesh(stretchGeo, stretchMat);
+      creamStretch.rotation.z = Math.PI / 2; // horizontal
+      creamStretch.position.set(0, -0.03, 0);
+      barGroup.add(creamStretch);
+
+      // Second stretch strand (upper)
+      const stretch2 = new THREE.Mesh(stretchGeo.clone(), stretchMat.clone());
+      stretch2.rotation.z = Math.PI / 2;
+      stretch2.position.set(0, 0.13, 0);
+      stretch2.material = stretchMat.clone();
+      stretch2.material.opacity = 0.0;
+      barGroup.add(stretch2);
+
+      barGroup.position.set(0, 0.5, 0);
+      scene.add(barGroup);
+
+      // ============================================================
+      // FLOATING PARTICLES — chocolate crumbs & cocoa dust
+      // ============================================================
+      const particleCount = 180;
+      const particles = new THREE.BufferGeometry();
+      const posArray = new Float32Array(particleCount * 3);
+      const colorArray = new Float32Array(particleCount * 3);
+      for (let i = 0; i < particleCount; i++) {
+        posArray[i * 3] = (Math.random() - 0.5) * 16;
+        posArray[i * 3 + 1] = (Math.random() - 0.5) * 10;
+        posArray[i * 3 + 2] = (Math.random() - 0.5) * 8 - 2;
+        colorArray[i * 3] = 0.4 + Math.random() * 0.35;
+        colorArray[i * 3 + 1] = 0.2 + Math.random() * 0.25;
+        colorArray[i * 3 + 2] = 0.05 + Math.random() * 0.12;
+      }
+      particles.setAttribute(
+        'position',
+        new THREE.BufferAttribute(posArray, 3)
+      );
+      particles.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+      const particleSystem = new THREE.Points(
+        particles,
+        new THREE.PointsMaterial({
+          size: 0.055,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.75,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        })
+      );
+      scene.add(particleSystem);
+
+      // ============================================================
+      // STATE — controls the "broken" animation
+      // ============================================================
+      const state = {
+        broken: false,
+        breakProgress: 0, // 0 = closed, 1 = fully broken
+        targetBreak: 0,
+        autoRotate: true,
+      };
+
+      // ============================================================
+      // MOUSE INTERACTION — bar subtly follows cursor
+      // ============================================================
+      let mouseX = 0,
+        mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+      });
+
+      // ============================================================
+      // BREAK / RESET ACTIONS
+      // ============================================================
+      function breakBar() {
+        state.broken = true;
+        state.targetBreak = 1;
+        state.autoRotate = false;
+      }
+
+      function resetBar() {
+        state.broken = false;
+        state.targetBreak = 0;
+        state.autoRotate = true;
+      }
+
+      document.getElementById('hero-cta').addEventListener('click', breakBar);
+      document.getElementById('hero-reset').addEventListener('click', resetBar);
+
+      // Auto-break on scroll past hero
+      let scrolled = false;
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > window.innerHeight * 0.35 && !scrolled) {
+          scrolled = true;
+          breakBar();
+        }
+        if (window.scrollY < window.innerHeight * 0.15 && scrolled) {
+          scrolled = false;
+          // Don't auto-reset — let user press RESET
+        }
+      });
+
+      // ============================================================
+      // ANIMATION LOOP
+      // ============================================================
+      let time = 0;
+      function animate() {
+        requestAnimationFrame(animate);
+        time += 0.005;
+
+        // Smooth break progress easing
+        state.breakProgress += (state.targetBreak - state.breakProgress) * 0.06;
+
+        // ---------- SEPARATE THE TWO HALVES ----------
+        const separation = state.breakProgress * 1.4; // how far they move apart
+        leftHalf.position.x = -1.35 - separation;
+        rightHalf.position.x = 1.35 + separation;
+
+        // Slight rotation on break (physical feel)
+        leftHalf.rotation.z = -state.breakProgress * 0.12;
+        rightHalf.rotation.z = state.breakProgress * 0.12;
+
+        // Slight Y drop (the halves sag a little)
+        leftHalf.position.y = -state.breakProgress * 0.08;
+        rightHalf.position.y = -state.breakProgress * 0.08;
+
+        // ---------- CREAM STRETCH ----------
+        // The strands fade in and stretch as the halves separate
+        const stretchOpacity = state.breakProgress * 0.95;
+        creamStretch.material.opacity = stretchOpacity;
+        stretch2.material.opacity = stretchOpacity;
+
+        // Stretch the strands to reach between the halves
+        const stretchScale = 1 + state.breakProgress * 0.9;
+        creamStretch.scale.x = stretchScale;
+        stretch2.scale.x = stretchScale;
+
+        // ---------- GROUP ROTATION ----------
+        if (state.autoRotate) {
+          barGroup.rotation.y = Math.sin(time * 0.5) * 0.25 + mouseX * 0.4;
+          barGroup.rotation.x = Math.sin(time * 0.35) * 0.06 + mouseY * 0.12;
+        } else {
+          // When broken, slowly rotate to show the cut face
+          barGroup.rotation.y += (0.35 - barGroup.rotation.y) * 0.02;
+          barGroup.rotation.x += (mouseY * 0.15 - barGroup.rotation.x) * 0.03;
+        }
+
+        // Gentle floating
+        barGroup.position.y = 0.5 + Math.sin(time * 0.9) * 0.08;
+
+        // ---------- PARTICLES ----------
+        particleSystem.rotation.y += 0.0004;
+        particleSystem.rotation.x += 0.00015;
+
+        // ---------- CAMERA ----------
+        camera.position.x += (mouseX * 0.6 - camera.position.x) * 0.02;
+        camera.position.y += (0.5 + mouseY * 0.35 - camera.position.y) * 0.02;
+        camera.lookAt(0, 0.4, 0);
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // ============================================================
+      // RESIZE
+      // ============================================================
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // ============================================================
+      // NAV SHRINK
+      // ============================================================
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('shrink', window.scrollY > 80);
+      });
+
+      // ============================================================
+      // BREAK INTERACTION SECTION (the draggable bar)
+      // ============================================================
+      const breakBar = document.getElementById('break-bar');
+      const breakMsg = document.getElementById('break-msg');
+      const replayBtn = document.getElementById('replay-btn');
+      let isDragging = false,
+        dragStartX = 0,
+        hasBroken = false;
+
+      breakBar.addEventListener('mousedown', (e) => {
+        if (hasBroken) return;
+        isDragging = true;
+        dragStartX = e.clientX;
+        breakBar.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging || hasBroken) return;
+        if (e.clientX - dragStartX > 30) {
+          hasBroken = true;
+          isDragging = false;
+          breakBar.classList.add('broken');
+          breakBar.style.cursor = 'default';
+          breakMsg.textContent = 'THAT CRUNCH THOUGH.';
+          replayBtn.style.display = 'inline-block';
+          // Trigger the 3D bar to break too
+          breakBar();
+        }
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!hasBroken) {
+          isDragging = false;
+          breakBar.style.cursor = 'grab';
+        }
+      });
+
+      replayBtn.addEventListener('click', () => {
+        hasBroken = false;
+        breakBar.classList.remove('broken');
+        breakBar.style.cursor = 'grab';
+        breakMsg.textContent = '';
+        replayBtn.style.display = 'none';
+        resetBar();
+      });
+
+      // ============================================================
+      // FUN SECTION — animate the 3D bar
+      // ============================================================
+      document.querySelectorAll('.fun-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document
+            .querySelectorAll('.fun-btn')
+            .forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const type = btn.dataset.fun;
+          const messages = {
+            milk: '🥛 Milk splash! Creamy meets creamy.',
+            bite: '🍫 One big bite. Pure satisfaction.',
+            break: '💥 CRACK! The bar splits dramatically.',
+            slow: '😋 Slow and steady. Every second delicious.',
+            share: '❤️ Sharing is caring. Two happy pieces.',
+          };
+          document.getElementById('fun-feedback').textContent =
+            messages[type] || '';
+
+          // Drive the 3D bar
+          if (type === 'break') breakBar();
+          else if (type === 'milk') {
+            resetBar();
+            gsap.to(barGroup.scale, {
+              x: 1.15,
+              y: 1.15,
+              z: 1.15,
+              duration: 0.4,
+              yoyo: true,
+              repeat: 1,
+            });
+          } else if (type === 'bite') {
+            resetBar();
+            gsap.to(barGroup.scale, {
+              x: 1.25,
+              y: 1.25,
+              z: 1.25,
+              duration: 0.3,
+              yoyo: true,
+              repeat: 1,
+            });
+          } else if (type === 'share') {
+            breakBar();
+            gsap.to(leftHalf.position, {
+              x: -2.8,
+              duration: 0.8,
+              ease: 'power2.out',
+            });
+            gsap.to(rightHalf.position, {
+              x: 2.8,
+              duration: 0.8,
+              ease: 'power2.out',
+            });
+          } else if (type === 'slow') {
+            resetBar();
+            gsap.to(barGroup.rotation, {
+              y: barGroup.rotation.y + Math.PI * 2,
+              duration: 2.5,
+              ease: 'power1.inOut',
+            });
+          }
+        });
+      });
+
+      // ============================================================
+      // PRODUCT HOVER — nudge the 3D bar
+      // ============================================================
+      document.querySelectorAll('.product-float').forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+          if (!state.broken) {
+            gsap.to(barGroup.rotation, {
+              y: 0.5,
+              duration: 0.6,
+              ease: 'power2.out',
+            });
+            gsap.to(barGroup.scale, {
+              x: 1.05,
+              y: 1.05,
+              z: 1.05,
+              duration: 0.4,
+            });
+          }
+        });
+        card.addEventListener('mouseleave', () => {
+          if (!state.broken) {
+            gsap.to(barGroup.rotation, {
+              y: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+            });
+            gsap.to(barGroup.scale, { x: 1, y: 1, z: 1, duration: 0.4 });
+          }
+        });
+      });
+
+      // ============================================================
+      // SMOOTH SCROLL
+      // ============================================================
+      document
+        .querySelectorAll('.nav-links a, .footer-links a')
+        .forEach((link) => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              e.preventDefault();
+              document
+                .querySelector(href)
+                ?.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+
+      // ============================================================
+      // GSAP LOADER (for the smooth tween helpers above)
+      // ============================================================
+      const gsapScript = document.createElement('script');
+      gsapScript.src =
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+      gsapScript.onload = () => {
+        // Entrance animation
+        gsap.from(barGroup.scale, {
+          x: 0,
+          y: 0,
+          z: 0,
+          duration: 1.2,
+          ease: 'elastic.out(1, 0.5)',
+        });
+        gsap.from(barGroup.rotation, {
+          y: Math.PI * 2,
+          duration: 1.5,
+          ease: 'power2.out',
+        });
+      };
+      document.head.appendChild(gsapScript);
+    </script>
+  </body>
+</html>
